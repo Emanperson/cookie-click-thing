@@ -3,16 +3,14 @@
   border-radius: 10px;
 }
 html {
-  background: url("https://512pixels.net/downloads/macos-wallpapers/10-6-Server.jpg");
+  background: url("https://512pixels.net/downloads/macos-wallpapers/10-6.png");
   color: white;
   font-family: Arial, sans-serif;
-  background-repeat: no-repeat;
-  background-size: cover;
+    background-repeat: no-repeat;
+  background-size: 100%;
   background-position: center;
-  background-attachment: fixed;
-  min-height: 100vh;
 }
-
+ 
 #game {
    display: flex;
   flex-direction: column;
