@@ -27,9 +27,9 @@ function getRandomInt(min, max) {
 // info box management
 // infoAPI lmao
 function info(infocommand) {
-  if (infocommand == clear) {
+  if (infocommand == "clear") {
     infobox.innerHTML = "";
-  } else if (infocommand == notenuough) {
+  } else if (infocommand == "notenuough") {
     infobox.innerHTML = "<p>Not enough Cookies!</p>";
   } else {
     infobox.innerHTML = "<p>" + infocommand + "</p>";
