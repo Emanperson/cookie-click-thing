@@ -54,7 +54,7 @@ function addcookie() {
     cookieamount += clickamount;
     refresh_amounts();
     clear();
-  } catch {
+  } catch (error) {   console.error(error);document.getElementById("errorlog")= error;
     crash("COOKIE_CLICK_FAILED");
   }
 }
@@ -67,7 +67,7 @@ function refresh_amounts() {
       save();
     } else {
     }
-  } catch {
+  } catch (error) {   console.error(error);document.getElementById("errorlog")= error;
     crash("AMOUNT_REFRESH_FAILED");
   }
 }
@@ -89,7 +89,7 @@ function buyminiclick() {
     } else {
       notenuough();
     }
-  } catch {
+  } catch (error) {   console.error(error);document.getElementById("errorlog")= error;
     crash("PURCHASE_FAULT");
   }
 }
@@ -109,7 +109,7 @@ function buyoven() {
     } else {
       notenuough();
     }
-  } catch {
+  } catch (error) {   console.error(error);document.getElementById("errorlog")= error;
     crash("PURCHASE_FAULT");
   }
 }
@@ -133,7 +133,7 @@ function buygrandmother() {
     } else {
       notenuough();
     }
-  } catch {
+  } catch (error) {   console.error(error);document.getElementById("errorlog")= error;
     crash("PURCHASE_FAULT");
   }
 }
@@ -154,7 +154,7 @@ function cheat() {
     } else {
       crash("CHEATS_DETECTED");
     }
-  } catch {
+  } catch (error) {   console.error(error);document.getElementById("errorlog")= error;
     crash("CHEATS_FAILED");
   }
 }
