@@ -1,6 +1,7 @@
 // General game setup
 var cookieamount = 0;
 var clickamount = 1;
+var gameloaded = 0;
 // var developer = "1";
 const infobox = document.getElementById("info");
 
@@ -13,6 +14,11 @@ var devbuild = "0";
 
 console.log("1.4.0 release");
 document.getElementById("grandmotherbuy").hidden = true;
+
+document.addEventListener("DOMContentLoaded", () => {
+ gameloaded= 1;
+  info("Game Fully Loaded.");
+})
 
 // should be built in but whatever
 function sleep(ms) {
@@ -49,11 +55,13 @@ function clear() {
 
 // THE BUTTON
 function addcookie() {
-  try {
+
     played = 1;
     cookieamount += clickamount;
     refresh_amounts();
     clear();
+    }
+    
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("COOKIE_CLICK_FAILED");
   }
@@ -61,11 +69,12 @@ function addcookie() {
 // THE function
 function refresh_amounts() {
   try {
+      try {
+    if (gameloaded === 1) {
     document.getElementById("amount").innerHTML =
       cookieamount + " Cookies" + "<br>" + clickamount + " per click";
-    if ((savesenabled = true)) {
-      save();
-    } else {
+   else{
+      info("Game Loading, please wait")
     }
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("AMOUNT_REFRESH_FAILED");
