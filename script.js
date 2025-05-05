@@ -1,5 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-  info("Game Fully Loaded.");
+
 // General game setup
 var cookieamount = 0;
 var clickamount = 1;
@@ -194,4 +193,4 @@ function crash(failreason) {
 }
 
 // Made by emanperson0 :3
-    })
+    
