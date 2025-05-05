@@ -68,11 +68,9 @@ try{
 // THE function
 function refresh_amounts() {
   try {
-      try {
     if (gameloaded === 1) {
-    document.getElementById("amount").innerHTML =
-      cookieamount + " Cookies" + "<br>" + clickamount + " per click";
-   else{
+    document.getElementById("amount").innerHTML = cookieamount + " Cookies" + "<br>" + clickamount + " per click";
+    } else {
       info("Game Loading, please wait")
     }
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
@@ -199,3 +197,4 @@ function crash(failreason) {
 }
 
 // Made by emanperson0 :3
+    
