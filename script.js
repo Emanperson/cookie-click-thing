@@ -1,7 +1,9 @@
+document.addEventListener("DOMContentLoaded", () => {
+  info("Game Fully Loaded.");
 // General game setup
 var cookieamount = 0;
 var clickamount = 1;
-var gameloaded = 0;
+
 // var developer = "1";
 const infobox = document.getElementById("info");
 
@@ -15,10 +17,7 @@ var devbuild = "0";
 console.log("1.4.0 release");
 document.getElementById("grandmotherbuy").hidden = true;
 
-document.addEventListener("DOMContentLoaded", () => {
- gameloaded= 1;
-  info("Game Fully Loaded.");
-})
+
 
 // should be built in but whatever
 function sleep(ms) {
@@ -197,4 +196,4 @@ function crash(failreason) {
 }
 
 // Made by emanperson0 :3
-    
+    })
