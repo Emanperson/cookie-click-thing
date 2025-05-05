@@ -55,12 +55,11 @@ function clear() {
 
 // THE BUTTON
 function addcookie() {
-
+try{
     played = 1;
     cookieamount += clickamount;
     refresh_amounts();
     clear();
-    }
     
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("COOKIE_CLICK_FAILED");
