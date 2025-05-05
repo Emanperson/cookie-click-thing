@@ -1,17 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Set game as loaded
   try {
     console.log("Game Fully Loaded.");
-    gameloaded = 1;
-    });
+    gameloaded = 1; // Mark the game as loaded
 
-    // Hide the grandmother button initially
-    document.getElementById("grandmotherbuy").hidden = true;
+    // Ensure the grandmother button is hidden initially without causing errors
+    const grandmotherButton = document.getElementById("grandmotherbuy");
+    if (grandmotherButton) {
+      grandmotherButton.hidden = true;
+    } else {
+      console.warn("Grandmother button is missing from the DOM.");
+    }
 
     // Call the initial info function to confirm the game has loaded
     info("Game Fully Loaded.");
   } catch (error) {
     console.error("Error during game initialization:", error);
-    crash("LOAD_ERROR");
   }
 });
 
@@ -30,9 +34,6 @@ var grandmotherbuyamount = 10000;
 var devbuild = "0";
 
 console.log("1.4.0 release");
-document.getElementById("grandmotherbuy").hidden = true;
-
-
 
 // should be built in but whatever
 function sleep(ms) {
@@ -69,13 +70,14 @@ function clear() {
 
 // THE BUTTON
 function addcookie() {
-try{
+  try {
     played = 1;
     cookieamount += clickamount;
     refresh_amounts();
     clear();
-    
-  } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
+  } catch (error) {
+    console.error(error);
+    document.getElementById("errorlog").innerHTML = error;
     crash("COOKIE_CLICK_FAILED");
   }
 }
@@ -83,11 +85,13 @@ try{
 function refresh_amounts() {
   try {
     if (gameloaded === 1) {
-    document.getElementById("amount").innerHTML = cookieamount + " Cookies" + "<br>" + clickamount + " per click";
+      document.getElementById("amount").innerHTML = cookieamount + " Cookies" + "<br>" + clickamount + " per click";
     } else {
-      info("Game Loading, please wait")
+      info("Game Loading, please wait");
     }
-  } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
+  } catch (error) {
+    console.error(error);
+    document.getElementById("errorlog").innerHTML = error;
     crash("AMOUNT_REFRESH_FAILED");
   }
 }
@@ -109,7 +113,9 @@ function buyminiclick() {
     } else {
       notenuough();
     }
-  } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
+  } catch (error) {
+    console.error(error);
+    document.getElementById("errorlog").innerHTML = error;
     crash("PURCHASE_FAULT");
   }
 }
@@ -129,7 +135,9 @@ function buyoven() {
     } else {
       notenuough();
     }
-  } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
+  } catch (error) {
+    console.error(error);
+    document.getElementById("errorlog").innerHTML = error;
     crash("PURCHASE_FAULT");
   }
 }
@@ -153,7 +161,9 @@ function buygrandmother() {
     } else {
       notenuough();
     }
-  } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
+  } catch (error) {
+    console.error(error);
+    document.getElementById("errorlog").innerHTML = error;
     crash("PURCHASE_FAULT");
   }
 }
@@ -174,7 +184,9 @@ function cheat() {
     } else {
       crash("CHEATS_DETECTED");
     }
-  } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
+  } catch (error) {
+    console.error(error);
+    document.getElementById("errorlog").innerHTML = error;
     crash("CHEATS_FAILED");
   }
 }
@@ -205,9 +217,6 @@ function crash(failreason) {
   if (devbuild == 1) {
     document.querySelector("html").style.background = "#41FF00";
   }
-  
 }
 
 // Made by emanperson0 :3
-    
-
