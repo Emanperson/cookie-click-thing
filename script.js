@@ -190,9 +190,7 @@ function crash(failreason) {
   if (devbuild == 1) {
     document.querySelector("html").style.background = "#41FF00";
   }
-  sleep(10000).then(() => {
-    window.location.reload();
-  });
+  
 }
 
 // Made by emanperson0 :3
