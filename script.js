@@ -72,11 +72,7 @@ function refresh_amounts() {
 
 
     document.getElementById("amount").innerHTML =
-      cookieamount + " Cookies" + "<br>" + clickamount + " per click";
-    if ((savesenabled = true)) {
-      save();
-    } else {
-    }
+      cookieamount + " Cookies" + "<br>" + clickamount + " per click"
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("AMOUNT_REFRESH_FAILED");
   }
