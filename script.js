@@ -1,4 +1,3 @@
-
 // General game setup
 var cookieamount = 0;
 var clickamount = 1;
@@ -15,6 +14,9 @@ var devbuild = "0";
 
 console.log("1.4.0 release");
 document.getElementById("grandmotherbuy").hidden = true;
+
+
+
 
 
 
@@ -53,12 +55,13 @@ function clear() {
 
 // THE BUTTON
 function addcookie() {
-try{
+  try {
     played = 1;
     cookieamount += clickamount;
     refresh_amounts();
     clear();
-    
+
+
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("COOKIE_CLICK_FAILED");
   }
@@ -66,10 +69,13 @@ try{
 // THE function
 function refresh_amounts() {
   try {
-    if (gameloaded === 1) {
-    document.getElementById("amount").innerHTML = cookieamount + " Cookies" + "<br>" + clickamount + " per click";
+
+
+    document.getElementById("amount").innerHTML =
+      cookieamount + " Cookies" + "<br>" + clickamount + " per click";
+    if ((savesenabled = true)) {
+      save();
     } else {
-      info("Game Loading, please wait")
     }
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("AMOUNT_REFRESH_FAILED");
@@ -189,8 +195,9 @@ function crash(failreason) {
   if (devbuild == 1) {
     document.querySelector("html").style.background = "#41FF00";
   }
-  
+  sleep(10000).then(() => {
+    window.location.reload();
+  });
 }
 
 // Made by emanperson0 :3
-    
