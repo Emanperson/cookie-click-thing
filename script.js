@@ -59,7 +59,7 @@ function addcookie() {
     played = 1;
     cookieamount += clickamount;
     refresh_amounts();
-    clear();
+    info("clear");
 
 
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
@@ -84,7 +84,7 @@ function refresh_amounts() {
 
 function buyminiclick() {
   try {
-    clear();
+    info("clear");
     if (cookieamount >= minibuyamount) {
       cookieamount = cookieamount - minibuyamount;
       clickamount += 1;
@@ -93,7 +93,7 @@ function buyminiclick() {
       document.getElementById("miniclickbuy").innerHTML =
         "Mini Mouse™ (+1 per click) | " + minibuyamount + " Cookies";
     } else {
-      notenuough();
+      info("notenough");
     }
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("PURCHASE_FAULT");
@@ -102,7 +102,7 @@ function buyminiclick() {
 
 function buyoven() {
   try {
-    clear();
+    info("clear");
 
     if (cookieamount >= ovenbuyamount) {
       cookieamount -= ovenbuyamount;
@@ -113,7 +113,7 @@ function buyoven() {
         "Oven (+20 per click) | " + ovenbuyamount + " Cookies";
       unlockgrandma();
     } else {
-      notenuough();
+      info("notenough");
     }
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("PURCHASE_FAULT");
@@ -125,7 +125,7 @@ function unlockgrandma() {
 
 function buygrandmother() {
   try {
-    clear();
+    info("clear");
 
     if (cookieamount >= grandmotherbuyamount) {
       cookieamount = cookieamount - grandmotherbuyamount;
@@ -137,7 +137,7 @@ function buygrandmother() {
         grandmotherbuyamount +
         " Cookies";
     } else {
-      notenuough();
+      info("notenough");
     }
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("PURCHASE_FAULT");
