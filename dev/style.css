@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+* {
+  border-radius: 10px;
+}
+html {
+  background: url("https://512pixels.net/downloads/macos-wallpapers/10-6.png");
+  color: white;
+  font-family: Arial, sans-serif;
+  background-size: cover;
+  background-size: 100%;
+  background-position: center;
+}
+ 
+#game {
+   display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  transition: 0.5s ease;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+button {
+  border-radius: 360px;
+  background-color: #101010;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #777777;
+  transform: scale(1.15);
+}
+button:active {
+  transform: scale(0.96);
+  background-color: #202020;
+}
+
+.img {
+  max-height: 180px;
+  max-width: 180px;
+  display: block;
+  margin: 0 auto;
+}
+
+#info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#amount {
+  font-size: 24px;
+  margin-top: 10px;
+  text-align: center;
+}
+a {
+  color: white;
+}
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+#chooser {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 12px;
+  max-width: 400px;
+  border-radius: 20px;
+  display: left;
+  text-align: left;
+  margin-bottom: 5px;
+  transition: height 0.5s ease;
+  align-items: left;
+  justify-content: left;
+}
+
+div {
+  margin-top: 20px;
+}
+header {
+  background: black;
+  color: red;
+  padding: 10px;
+}
+
+#bsod {
+  color: #ffffff;
+  font-family: "VT323", monospace;
+}
+
+#frown {
+  font-size: 60px;
+}
+.text-main {
+  font-size: 50px;
+  display: inline;
+}
+#qr {
+  max-height: 100px;
+  max-width: 100px;
+/* made by emanperson0 :3 */
