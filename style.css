@@ -6,8 +6,7 @@ html {
   background: url("https://512pixels.net/downloads/macos-wallpapers/10-6.png");
   color: white;
   font-family: Arial, sans-serif;
-  background-size: cover;
-  background-size: 100%;
+ background-size: 100% auto;
   background-position: center;
 }
  
@@ -66,21 +65,6 @@ a {
 .glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-}
-
-#chooser {
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 5px;
-  padding-bottom: 12px;
-  max-width: 400px;
-  border-radius: 20px;
-  display: left;
-  text-align: left;
-  margin-bottom: 5px;
-  transition: height 0.5s ease;
-  align-items: left;
-  justify-content: left;
 }
 
 div {
