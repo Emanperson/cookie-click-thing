@@ -10,9 +10,9 @@ var minibuyamount = "15";
 var ovenbuyamount = 100;
 var grandmotherbuyamount = 10000;
 // debug
-var devbuild = "0";
+var devbuild = "1";
 
-console.log("1.4.0 release");
+console.log("1.4.1 dev");
 document.getElementById("grandmotherbuy").hidden = true;
 
 
