@@ -1,6 +1,7 @@
 // General game setup
 var cookieamount = 0;
 var clickamount = 1;
+var errors = 0;
 
 // var developer = "1";
 const infobox = document.getElementById("info");
@@ -15,11 +16,6 @@ var devbuild = "1";
 console.log("1.4.1 dev");
 document.getElementById("grandmotherbuy").hidden = true;
 
-
-
-
-
-
 // should be built in but whatever
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -29,13 +25,10 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-//
-// info box management
-// infoAPI lmao
 function info(infocommand) {
-  if (infocommand == "clear") {
-    infobox.innerHTML = "";
-  } else if (infocommand == "notenuough") {
+  if (infocommand === "clear") {
+    infobox.innerHTML = ""; 
+  } else if (infocommand === "notenuough") {
     infobox.innerHTML = "<p>Not enough Cookies!</p>";
   } else {
     infobox.innerHTML = "<p>" + infocommand + "</p>";
@@ -50,7 +43,7 @@ function clear() {
 }
 
 //
-// Core FUnctions
+// Core Functions
 //
 
 // THE BUTTON
@@ -69,8 +62,6 @@ function addcookie() {
 // THE function
 function refresh_amounts() {
   try {
-
-
     document.getElementById("amount").innerHTML =
       cookieamount + " Cookies" + "<br>" + clickamount + " per click"
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
@@ -179,6 +170,9 @@ function devcook() {
 //ERROR HANDLE :3
 //
 function crash(failreason) {
+  if (errors < 5) {
+    info("An error occured. please try again.");
+  } else {
   document.getElementById("bsod").hidden = false;
   document.getElementById("game").remove();
   console.error("CRASHED!");
@@ -195,5 +189,5 @@ function crash(failreason) {
     window.location.reload();
   });
 }
-
+}
 // Made by emanperson0 :3
