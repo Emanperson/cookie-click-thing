@@ -14,6 +14,7 @@ var grandmotherbuyamount = 10000;
 var devbuild = "1";
 
 console.log("1.4.1 dev");
+console.log("Feel free to yoink code from this if you want");
 document.getElementById("grandmotherbuy").hidden = true;
 
 // should be built in but whatever
