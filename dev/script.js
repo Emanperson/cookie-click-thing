@@ -159,7 +159,12 @@ function cheat() {
 
 function devcook() {
   let deviscookin = parseInt(document.getElementById("devcooks").value, 10);
-  if (isNaN(deviscookin)) {
+  if (deviscookin == "fish") {
+    console.log("FISH");
+    Crash("FISH");
+  }
+    
+  else if (isNaN(deviscookin)) {
     crash("BAD_CHEATS");
   } else {
     cookieamount += deviscookin;
@@ -171,9 +176,9 @@ function devcook() {
 //ERROR HANDLE :3
 //
 function crash(failreason) {
-  if (errors < 5) {
-    info("An error occured. please try again.");
-  } else {
+  // if (errors < 5) {
+  //   info("An error occured. please try again.");
+  // } else {
   document.getElementById("bsod").hidden = false;
   document.getElementById("game").remove();
   console.error("CRASHED!");
