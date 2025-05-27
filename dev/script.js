@@ -1,3 +1,8 @@
+// this code is VERY fucky so good luck :3
+var version = 1.4.1;
+
+
+
 // General game setup
 var cookieamount = 0;
 var clickamount = 1;
@@ -5,7 +10,7 @@ var errors = 0;
 
 // var developer = "1";
 const infobox = document.getElementById("info");
-
+document.getElementByID("headerver").innerHTML= version;
 // Buy amounts
 var minibuyamount = "15";
 var ovenbuyamount = 100;
@@ -13,7 +18,8 @@ var grandmotherbuyamount = 10000;
 // debug
 var devbuild = "1";
 
-console.log("1.4.1 dev");
+console.log("Please work :3");
+console.log(version);
 console.log("Feel free to yoink code from this if you want");
 document.getElementById("grandmotherbuy").hidden = true;
 
