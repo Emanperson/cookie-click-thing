@@ -158,15 +158,16 @@ function cheat() {
 }
 
 function devcook() {
-  let deviscookin = parseInt(document.getElementById("devcooks").value, 10);
+  
   if (deviscookin == "fish") {
     console.log("FISH");
-    Crash("FISH");
+    crash("FISH");
   }
     
   else if (isNaN(deviscookin)) {
     crash("BAD_CHEATS");
   } else {
+    let deviscookin = parseInt(document.getElementById("devcooks").value, 10);
     cookieamount += deviscookin;
     refresh_amounts();
   }
