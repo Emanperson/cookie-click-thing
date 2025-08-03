@@ -1,5 +1,5 @@
 // this code is VERY fucky so good luck :3
-var version = 1.4.1;
+var version = "1.4.1";
 
 // General game setup
 var cookieamount = 0;
