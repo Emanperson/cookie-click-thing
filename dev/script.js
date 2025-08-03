@@ -1,8 +1,6 @@
 // this code is VERY fucky so good luck :3
 var version = 1.4.1;
 
-
-
 // General game setup
 var cookieamount = 0;
 var clickamount = 1;
@@ -10,7 +8,7 @@ var errors = 0;
 
 // var developer = "1";
 const infobox = document.getElementById("info");
-document.getElementByID("headerver").innerHTML= version;
+document.getElementById("headerver").innerHTML= version;
 // Buy amounts
 var minibuyamount = "15";
 var ovenbuyamount = 100;
