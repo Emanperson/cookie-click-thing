@@ -7,8 +7,7 @@ var clickamount = 1;
 var errors = 0;
 
 // var developer = "1";
-const infobox = document.getElementById("info");
-document.getElementById("headerver").innerHTML= version;
+
 // Buy amounts
 var minibuyamount = "15";
 var ovenbuyamount = 100;
@@ -30,6 +29,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+const infobox = document.getElementById("info");
 function info(infocommand) {
   if (infocommand === "clear") {
     infobox.innerHTML = ""; 
@@ -39,12 +39,12 @@ function info(infocommand) {
     infobox.innerHTML = "<p>" + infocommand + "</p>";
   }
 }
-// To Be Phased out in favor of infoAPI
+
 function notenuough() {
   infobox.innerHTML = "<p>Not enough Cookies!</p>";
 }
 function clear() {
-  infobox.innerHTML = ""; // Clear the info box
+  infobox.innerHTML = ""; 
 }
 
 //
