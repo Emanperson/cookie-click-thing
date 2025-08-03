@@ -200,5 +200,4 @@ function crash(failreason) {
     window.location.reload();
   });
 }
-}
 // Made by emanperson0 :3
