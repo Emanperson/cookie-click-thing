@@ -161,7 +161,7 @@ function cheat() {
 
 function devcook() {
   
-  if (deviscookin == "fish") {
+  if (deviscookin == "69198") {
     console.log("FISH");
     crash("FISH");
   }
