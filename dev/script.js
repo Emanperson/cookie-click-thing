@@ -89,7 +89,7 @@ function buyminiclick() {
       document.getElementById("miniclickbuy").innerHTML =
         "Mini Mouse™ (+1 per click) | " + minibuyamount + " Cookies";
     } else {
-      info("notenough");
+      info("notenuough");
     }
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("PURCHASE_FAULT");
@@ -109,7 +109,7 @@ function buyoven() {
         "Oven (+20 per click) | " + ovenbuyamount + " Cookies";
       unlockgrandma();
     } else {
-      info("notenough");
+      info("notenuough");
     }
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("PURCHASE_FAULT");
@@ -133,7 +133,7 @@ function buygrandmother() {
         grandmotherbuyamount +
         " Cookies";
     } else {
-      info("notenough");
+      info("notenuough");
     }
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("PURCHASE_FAULT");
@@ -181,9 +181,7 @@ function devcook() {
 //ERROR HANDLE :3
 //
 function crash(failreason) {
-  // if (errors < 5) {
-  //   info("An error occured. please try again.");
-  // } else {
+  
   document.getElementById("bsod").hidden = false;
   document.getElementById("game").remove();
   console.error("CRASHED!");
