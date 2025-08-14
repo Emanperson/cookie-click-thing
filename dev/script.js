@@ -33,8 +33,6 @@ const infobox = document.getElementById("info");
 function info(infocommand) {
   if (infocommand === "clear") {
     infobox.innerHTML = ""; 
-  } else if (infocommand === "notenuough") {
-    infobox.innerHTML = "<p>Not enough Cookies!</p>";
   } else {
     infobox.innerHTML = "<p>" + infocommand + "</p>";
   }
@@ -89,7 +87,7 @@ function buyminiclick() {
       document.getElementById("miniclickbuy").innerHTML =
         "Mini Mouse™ (+1 per click) | " + minibuyamount + " Cookies";
     } else {
-      info("notenuough");
+      info("Not enough Cookies!");
     }
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("PURCHASE_FAULT");
@@ -109,7 +107,7 @@ function buyoven() {
         "Oven (+20 per click) | " + ovenbuyamount + " Cookies";
       unlockgrandma();
     } else {
-      info("notenuough");
+      info("Not enough Cookies!");
     }
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("PURCHASE_FAULT");
@@ -133,7 +131,7 @@ function buygrandmother() {
         grandmotherbuyamount +
         " Cookies";
     } else {
-      info("notenuough");
+      info("Not enough Cookies!");
     }
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("PURCHASE_FAULT");
