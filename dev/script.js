@@ -145,14 +145,7 @@ function devmode() {
 }
 function cheat() {
   try {
-    if (devbuild == 1) {
-      document.querySelector("#dev").innerHTML =
-        "<input id='devcooks' type='number'></input>" +
-        "<br>" +
-        "<button onclick='devcook()'>Jesse, we need to cook</button>" +
-        "<br>";
-    } else {
-      crash("CHEATS_DETECTED");
+    document.getElementById("dev").hidden = false
     }
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("CHEATS_FAILED");
@@ -161,7 +154,7 @@ function cheat() {
 
 function devcook() {
   
-  if (deviscookin == "69198") {
+  if (deviscookin == "FISH") {
     console.log("FISH");
     crash("FISH");
   }
