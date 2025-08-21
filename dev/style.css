@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 * {
   border-radius: 10px;
 }
 html {
-  background: url("https://512pixels.net/downloads/macos-wallpapers/10-6-Server.jpg");
+  background: url("emanperson.github.io/webimg/genericbg/macos-server10-6.png");
   color: white;
-  font-family: Arial, sans-serif;
+  font-family: "Ubuntu", sans-serif;
   background-size: cover;
   background-size: 100%;
   background-position: center;
