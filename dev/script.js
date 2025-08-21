@@ -10,7 +10,7 @@ var errors = 0;
 
 // Buy amounts
 var minibuyamount = "15";
-var ovenbuyamount = 100;
+var ovenbuyamount = 1000;
 var grandmotherbuyamount = 10000;
 // debug
 var devbuild = "1";
@@ -67,6 +67,9 @@ function refresh_amounts() {
   try {
     document.getElementById("amount").innerHTML =
       cookieamount + " Cookies" + "<br>" + clickamount + " per click"
+    document.getElementById("miniclickbuy").innerHTML = "Mini Mouse™ (+1 per click) | " + minibuyamount + " Cookies";
+     document.getElementById("ovenbuy").innerHTML =  "Oven (+20 per click) | " + ovenbuyamount + " Cookies";
+    document.getElementById("grandmotherbuy").innerHTML = "Someone's grandmother (+100 per click) | " + grandmotherbuyamount + " Cookies";
   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("AMOUNT_REFRESH_FAILED");
   }
@@ -76,11 +79,49 @@ function refresh_amounts() {
 // Purchases :3
 //
 
+// new buy thing to clean up code
+function buy(purchaseID){
+   try {
+     if (purchaseID == 0) {
+       console.warn("A Valid purchase ID is required.");
+     } else if (purchaseID == 1 && cookieamount >= minibuyamount) {
+     cookieamount -= minibuyamount;
+      clickamount += 1;
+      refresh_amounts();
+      minibuyamount = Number(minibuyamount) + 5;
+      document.getElementById("miniclickbuy").innerHTML = "Mini Mouse™ (+1 per click) | " + minibuyamount + " Cookies";
+    } else if (purchaseID == 1 && cookieamount < minibuyamount){
+info("Not enough Cookies!");
+   } else if (purchaseID == 2 && cookieamount >= ovenbuyamount) {
+        cookieamount -= ovenbuyamount;
+      clickamount += 20;
+      refresh_amounts();
+      ovenbuyamount = Number(ovenbuyamount) * 2;
+      document.getElementById("ovenbuy").innerHTML =  "Oven (+20 per click) | " + ovenbuyamount + " Cookies";
+      document.getElementById("grandmotherbuy").hidden = false;
+     } else if (purchaseID == 2 && cookieamount < ovenbuyamount){
+       info("Not enough Cookies!");
+   } else if (purchaseID == 3 && cookieamount >= grandmotherbuyamount) {
+      cookieamount -= grandmotherbuyamount;
+      clickamount += 100;
+      refresh_amounts();
+      grandmotherbuyamount = grandmotherbuyamount * 2;
+      document.getElementById("grandmotherbuy").innerHTML = "Someone's grandmother (+100 per click) | " + grandmotherbuyamount + " Cookies";
+        } else if (purchaseID == 2 && cookieamount < ovenbuyamount){
+       info("Not enough Cookies!");
+   } else {
+       console.error("illegal purchase ID");
+     }
+catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
+    crash("PURCHASE_FAULT");
+  }
+
+        
 function buyminiclick() {
   try {
     info("clear");
     if (cookieamount >= minibuyamount) {
-      cookieamount = cookieamount - minibuyamount;
+      cookieamount -= minibuyamount;
       clickamount += 1;
       refresh_amounts();
       minibuyamount = Number(minibuyamount) + 5;
@@ -105,7 +146,8 @@ function buyoven() {
       ovenbuyamount = Number(ovenbuyamount) * 2;
       document.getElementById("ovenbuy").innerHTML =
         "Oven (+20 per click) | " + ovenbuyamount + " Cookies";
-      unlockgrandma();
+      document.getElementById("grandmotherbuy").hidden = false;
+     
     } else {
       info("Not enough Cookies!");
     }
@@ -113,10 +155,6 @@ function buyoven() {
     crash("PURCHASE_FAULT");
   }
 }
-function unlockgrandma() {
-  document.getElementById("grandmotherbuy").hidden = false;
-}
-
 function buygrandmother() {
   try {
     info("clear");
