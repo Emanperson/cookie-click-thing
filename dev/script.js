@@ -1,4 +1,3 @@
-// this code is VERY fucky so good luck :3
 var version = "1.4.1";
 
 // General game setup
@@ -112,7 +111,7 @@ info("Not enough Cookies!");
    } else {
        console.error("illegal purchase ID");
      }
-catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
+   } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
     crash("PURCHASE_FAULT");
   }
 
