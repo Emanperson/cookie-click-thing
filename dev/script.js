@@ -1,4 +1,4 @@
-var version = "1.4.1";
+var version = "1.5.0 - AUTOCLICKER V2.0 ALPHA";
 
 // General game setup
 var cookieamount = 0;
@@ -11,8 +11,29 @@ var errors = 0;
 var minibuyamount = "15";
 var ovenbuyamount = 1000;
 var grandmotherbuyamount = 10000;
+var protoclickerbuyamount = 50000; 
+var autoclickbuyamount = 1; // probably going to be 100,000 once fully implamented
 // debug
 var devbuild = "1";
+
+// 2nd attempt of autoclicker stuff (first one was HOT garbage)
+// this time with p5.js
+let clickspersec = 0;
+setup(){
+  frameRate(1);
+  // 1x per sec
+}
+funtion draw(){
+  cookieamount += clickspersec;
+  refresh_amounts();
+  // why didn't i do this earlier that took 5 minutes max (at leas for inital stuff)
+  //might just have it call addcookie(); but idk yet
+  // i mean its potrayed as clickinng the cookie so it'd make sense
+  //imma write it incase i wanna do it
+  // frameRate(clickspersec);
+  // addcookie();
+}
+
 
 console.log("Please work :3");
 console.log(version);
@@ -106,7 +127,12 @@ function buy(purchaseID) {
       refresh_amounts();
       grandmotherbuyamount = grandmotherbuyamount * 2;
       document.getElementById("grandmotherbuy").innerHTML = "Someone's grandmother (+100 per click) | " + grandmotherbuyamount + " Cookies";
-    } else {
+    }  else if (purchaseID == 5 && cookieamount >= autoclickbuyamount) {
+      // ID 5 bc i plan to make a shittier version of it thats cheaper but this is really jus a test
+      cookieamount -= autoclickbuyamount;
+      clickspersec += 1
+    }
+    else {
       console.error("illegal purchase ID");
     }
   } catch (error) {
@@ -116,7 +142,18 @@ function buy(purchaseID) {
   }
 }
 
-        
+
+
+
+
+//
+// TODO: migrate to the buy() function
+//
+// this is going to be in the code for a while but its probably going to go unused
+// i think the term is depricateed
+//it works but shouldnt really be used anymore
+// note how the autoclicker uses buy() only
+// imma put a cheat sheet in here eventually
 function buyminiclick() {
   try {
     info("clear");
@@ -175,6 +212,21 @@ function buygrandmother() {
     crash("PURCHASE_FAULT");
   }
 }
+//
+// End leagacy buy system
+//
+
+
+
+
+
+
+
+
+
+
+
+
 
 // cheats
 function devmode() {
