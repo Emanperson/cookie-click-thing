@@ -19,7 +19,7 @@ var devbuild = "1";
 // 2nd attempt of autoclicker stuff (first one was HOT garbage)
 // this time with p5.js
 let clickspersec = 0;
-setup(){
+setup() {
   frameRate(1);
   // 1x per sec
 }
