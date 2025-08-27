@@ -1,5 +1,5 @@
 var version = "1.5.0 - AUTOCLICKER V2.0 ALPHA";
-
+refresh_amounts();
 // General game setup
 var cookieamount = 0;
 var clickamount = 1;
