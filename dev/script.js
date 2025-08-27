@@ -11,7 +11,7 @@ var errors = 0;
 var minibuyamount = "15";
 var ovenbuyamount = 1000;
 var grandmotherbuyamount = 10000;
-var protoclickerbuyamount = 50000; 
+var protoclickerbuyamount = 50000;
 var autoclickbuyamount = 1; // probably going to be 100,000 once fully implamented
 // debug
 var devbuild = "1";
@@ -19,11 +19,11 @@ var devbuild = "1";
 // 2nd attempt of autoclicker stuff (first one was HOT garbage)
 // this time with p5.js
 let clickspersec = 0;
-setup() {
+function setup() {
   frameRate(1);
   // 1x per sec
 }
-funtion draw(){
+function draw() {
   cookieamount += clickspersec;
   refresh_amounts();
   // why didn't i do this earlier that took 5 minutes max (at leas for inital stuff)
@@ -33,7 +33,6 @@ funtion draw(){
   // frameRate(clickspersec);
   // addcookie();
 }
-
 
 console.log("Please work :3");
 console.log(version);
@@ -52,7 +51,7 @@ function getRandomInt(min, max) {
 const infobox = document.getElementById("info");
 function info(infocommand) {
   if (infocommand === "clear") {
-    infobox.innerHTML = ""; 
+    infobox.innerHTML = "";
   } else {
     infobox.innerHTML = "<p>" + infocommand + "</p>";
   }
@@ -62,7 +61,7 @@ function notenuough() {
   infobox.innerHTML = "<p>Not enough Cookies!</p>";
 }
 function clear() {
-  infobox.innerHTML = ""; 
+  infobox.innerHTML = "";
 }
 
 //
@@ -76,9 +75,9 @@ function addcookie() {
     cookieamount += clickamount;
     refresh_amounts();
     info("clear");
-
-
-  } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
+  } catch (error) {
+    console.error(error);
+    document.getElementById("errorlog").innerHTML = error;
     crash("COOKIE_CLICK_FAILED");
   }
 }
@@ -86,11 +85,18 @@ function addcookie() {
 function refresh_amounts() {
   try {
     document.getElementById("amount").innerHTML =
-      cookieamount + " Cookies" + "<br>" + clickamount + " per click"
-    document.getElementById("miniclickbuy").innerHTML = "Mini Mouse™ (+1 per click) | " + minibuyamount + " Cookies";
-     document.getElementById("ovenbuy").innerHTML =  "Oven (+20 per click) | " + ovenbuyamount + " Cookies";
-    document.getElementById("grandmotherbuy").innerHTML = "Someone's grandmother (+100 per click) | " + grandmotherbuyamount + " Cookies";
-  } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
+      cookieamount + " Cookies" + "<br>" + clickamount + " per click";
+    document.getElementById("miniclickbuy").innerHTML =
+      "Mini Mouse™ (+1 per click) | " + minibuyamount + " Cookies";
+    document.getElementById("ovenbuy").innerHTML =
+      "Oven (+20 per click) | " + ovenbuyamount + " Cookies";
+    document.getElementById("grandmotherbuy").innerHTML =
+      "Someone's grandmother (+100 per click) | " +
+      grandmotherbuyamount +
+      " Cookies";
+  } catch (error) {
+    console.error(error);
+    document.getElementById("errorlog").innerHTML = error;
     crash("AMOUNT_REFRESH_FAILED");
   }
 }
@@ -109,7 +115,8 @@ function buy(purchaseID) {
       clickamount += 1;
       refresh_amounts();
       minibuyamount = Number(minibuyamount) + 5;
-      document.getElementById("miniclickbuy").innerHTML = "Mini Mouse™ (+1 per click) | " + minibuyamount + " Cookies";
+      document.getElementById("miniclickbuy").innerHTML =
+        "Mini Mouse™ (+1 per click) | " + minibuyamount + " Cookies";
     } else if (purchaseID == 1 && cookieamount < minibuyamount) {
       info("Not enough Cookies!");
     } else if (purchaseID == 2 && cookieamount >= ovenbuyamount) {
@@ -117,7 +124,8 @@ function buy(purchaseID) {
       clickamount += 20;
       refresh_amounts();
       ovenbuyamount = Number(ovenbuyamount) * 2;
-      document.getElementById("ovenbuy").innerHTML = "Oven (+20 per click) | " + ovenbuyamount + " Cookies";
+      document.getElementById("ovenbuy").innerHTML =
+        "Oven (+20 per click) | " + ovenbuyamount + " Cookies";
       document.getElementById("grandmotherbuy").hidden = false;
     } else if (purchaseID == 2 && cookieamount < ovenbuyamount) {
       info("Not enough Cookies!");
@@ -126,13 +134,15 @@ function buy(purchaseID) {
       clickamount += 100;
       refresh_amounts();
       grandmotherbuyamount = grandmotherbuyamount * 2;
-      document.getElementById("grandmotherbuy").innerHTML = "Someone's grandmother (+100 per click) | " + grandmotherbuyamount + " Cookies";
-    }  else if (purchaseID == 5 && cookieamount >= autoclickbuyamount) {
+      document.getElementById("grandmotherbuy").innerHTML =
+        "Someone's grandmother (+100 per click) | " +
+        grandmotherbuyamount +
+        " Cookies";
+    } else if (purchaseID == 5 && cookieamount >= autoclickbuyamount) {
       // ID 5 bc i plan to make a shittier version of it thats cheaper but this is really jus a test
       cookieamount -= autoclickbuyamount;
-      clickspersec += 1
-    }
-    else {
+      clickspersec += 1;
+    } else {
       console.error("illegal purchase ID");
     }
   } catch (error) {
@@ -141,10 +151,6 @@ function buy(purchaseID) {
     crash("PURCHASE_FAULT");
   }
 }
-
-
-
-
 
 //
 // TODO: migrate to the buy() function
@@ -167,7 +173,9 @@ function buyminiclick() {
     } else {
       info("Not enough Cookies!");
     }
-  } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
+  } catch (error) {
+    console.error(error);
+    document.getElementById("errorlog").innerHTML = error;
     crash("PURCHASE_FAULT");
   }
 }
@@ -184,11 +192,12 @@ function buyoven() {
       document.getElementById("ovenbuy").innerHTML =
         "Oven (+20 per click) | " + ovenbuyamount + " Cookies";
       document.getElementById("grandmotherbuy").hidden = false;
-     
     } else {
       info("Not enough Cookies!");
     }
-  } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
+  } catch (error) {
+    console.error(error);
+    document.getElementById("errorlog").innerHTML = error;
     crash("PURCHASE_FAULT");
   }
 }
@@ -208,25 +217,15 @@ function buygrandmother() {
     } else {
       info("Not enough Cookies!");
     }
-  } catch (error) {   console.error(error);document.getElementById("errorlog").innerHTML= error;
+  } catch (error) {
+    console.error(error);
+    document.getElementById("errorlog").innerHTML = error;
     crash("PURCHASE_FAULT");
   }
 }
 //
 // End leagacy buy system
 //
-
-
-
-
-
-
-
-
-
-
-
-
 
 // cheats
 function devmode() {
@@ -244,13 +243,10 @@ function cheat() {
 }
 
 function devcook() {
-  
   if (deviscookin == "FISH") {
     console.log("FISH");
     crash("FISH");
-  }
-    
-  else if (isNaN(deviscookin)) {
+  } else if (isNaN(deviscookin)) {
     crash("BAD_CHEATS");
   } else {
     let deviscookin = parseInt(document.getElementById("devcooks").value, 10);
@@ -263,7 +259,6 @@ function devcook() {
 //ERROR HANDLE :3
 //
 function crash(failreason) {
-  
   document.getElementById("bsod").hidden = false;
   document.getElementById("game").remove();
   console.error("CRASHED!");
