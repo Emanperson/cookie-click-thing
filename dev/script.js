@@ -1,11 +1,15 @@
-var version = "1.5.0 - AUTOCLICKER V2.0 ALPHA";
+// feel free to take code fom this if u want
+// ignore my rambling in the comments
+
+
+
+
+var version = "1.5.0 - AUTOCLICKER V2.1 ALPHA";
 
 // General game setup
 var cookieamount = 0;
 var clickamount = 1;
 var errors = 0;
-
-// var developer = "1";
 
 // Buy amounts
 var minibuyamount = "15";
@@ -16,27 +20,11 @@ var autoclickbuyamount = 1; // probably going to be 100,000 once fully implament
 // debug
 var devbuild = "1";
 
-// 2nd attempt of autoclicker stuff (first one was HOT garbage)
-// this time with p5.js
-let clickspersec = 0;
-function setup() {
-  frameRate(1);
-  // 1x per sec
-}
-function draw() {
-  cookieamount += clickspersec;
-  refresh_amounts();
-  // why didn't i do this earlier that took 5 minutes max (at leas for inital stuff)
-  //might just have it call addcookie(); but idk yet
-  // i mean its potrayed as clickinng the cookie so it'd make sense
-  //imma write it incase i wanna do it
-  // frameRate(clickspersec);
-  // addcookie();
-}
 
-console.log("Please work :3");
+let clickspersec = 0;
+setInterval(autoClick, 1000);
+
 console.log(version);
-console.log("Feel free to yoink code from this if you want");
 document.getElementById("grandmotherbuy").hidden = true;
 
 // should be built in but whatever
@@ -79,6 +67,16 @@ function addcookie() {
     console.error(error);
     document.getElementById("errorlog").innerHTML = error;
     crash("COOKIE_CLICK_FAILED");
+  }
+}
+function autoClick() {
+   try {
+    cookieamount += clickspersec;
+    refresh_amounts();
+  } catch (error) {
+    console.error(error);
+    document.getElementById("errorlog").innerHTML = error;
+    crash("AUTO_CLICK_FAILED");
   }
 }
 // THE function
@@ -143,7 +141,9 @@ function buy(purchaseID) {
       cookieamount -= autoclickbuyamount;
       clickspersec += 1;
     } else {
-      console.error("illegal purchase ID");
+      info("Not enough Cookies!");
+      console.error("Not enough Cookies OR illegal purchase ID");
+      console.warn("I could make it chek if its less but eh thats a lot of work; imma just assume its not enough");
     }
   } catch (error) {
     console.error(error);
