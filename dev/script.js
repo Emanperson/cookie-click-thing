@@ -4,7 +4,7 @@
 
 
 
-var version = "1.5.0 - AUTOCLICKER V2.1 ALPHA";
+var version = "1.5.0 - AUTOCLICKER";
 
 // General game setup
 var cookieamount = 0;
@@ -12,20 +12,55 @@ var clickamount = 1;
 var errors = 0;
 
 // Buy amounts
-var minibuyamount = "15";
+var minibuyamount = 15;
 var ovenbuyamount = 1000;
 var grandmotherbuyamount = 10000;
 var protoclickerbuyamount = 50000;
-var autoclickbuyamount = 1; // probably going to be 100,000 once fully implamented
+var protoAutoclickBuyAmount = 100000;
+var autoclickbuyamount = 1; 
 // debug
 var devbuild = "1";
-
+var savecode = "";
+var saveVersion = 1;
 
 let clickspersec = 0;
 setInterval(autoClick, 1000);
 
 console.log(version);
 document.getElementById("grandmotherbuy").hidden = true;
+
+function createSaveCode(){
+  saveCode = "SAVE$"+cookieamount + "%" + clickamount + "%" + minibuyamount + "%" + ovenbuyamount + "%" + grandmotherbuyamount + "%" + protoclickerbuyamount + "%" + autoclickbuyamount + "%" + clickspersec + "%" + saveVersion + "$"
+  prompt("This is your save code; its very basic but it will probably work" + saveCode)
+}
+function loadSaveCode() {
+  let saveCode = prompt("Please paste your save code. If you dont't know what that looks like; it should start with SAVE$");
+  
+  // Check if the code starts with "SAVE$" and ends with "$"
+  if (saveCode.startsWith("SAVE$") && saveCode.endsWith("$")) {
+    // Strip the prefix and suffix
+    let dataString = saveCode.slice(5, -1);
+    
+    // Split the string into individual values
+    let dataParts = dataString.split("%");
+    
+    // Assign values back to variables
+    cookieamount = parseInt(dataParts[0]);
+    clickamount = parseInt(dataParts[1]);
+    minibuyamount = parseInt(dataParts[2]);
+    ovenbuyamount = parseInt(dataParts[3]);
+    grandmotherbuyamount = parseInt(dataParts[4]);
+    protoclickerbuyamount = parseInt(dataParts[5]);
+    autoclickbuyamount = parseInt(dataParts[6]);
+    clickspersec = parseFloat(dataParts[7]); // assuming this might be a decimal
+    saveVersion = dataParts[8]; // keep as string if versioning
+
+  } else {
+    alert("Save coad load failed. is it a valid code?");
+  }
+}
+
+
 
 // should be built in but whatever
 function sleep(ms) {
