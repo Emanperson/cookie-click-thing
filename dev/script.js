@@ -179,95 +179,22 @@ function buy(purchaseID) {
   }
 }
 
-//
-// TODO: migrate to the buy() function
-//
-// this is going to be in the code for a while but its probably going to go unused
-// i think the term is depricated
-//it works but shouldnt really be used anymore
 
-
-// time to edit the HTML
 function buyminiclick() {
-  try {
-    info("clear");
-    if (cookieamount >= minibuyamount) {
-      cookieamount -= minibuyamount;
-      clickamount += 1;
-      refresh_amounts();
-      minibuyamount = Number(minibuyamount) + 5;
-      document.getElementById("miniclickbuy").innerHTML =
-        "Mini Mouse™ (+1 per click) | " + minibuyamount + " Cookies";
-    } else {
-      info("Not enough Cookies!");
-    }
-  } catch (error) {
-    console.error(error);
-    document.getElementById("errorlog").innerHTML = error;
-    crash("PURCHASE_FAULT");
-  }
+  buy('1');
 }
-
 function buyoven() {
-  try {
-    info("clear");
-
-    if (cookieamount >= ovenbuyamount) {
-      cookieamount -= ovenbuyamount;
-      clickamount += 20;
-      refresh_amounts();
-      ovenbuyamount = Number(ovenbuyamount) * 2;
-      document.getElementById("ovenbuy").innerHTML =
-        "Oven (+20 per click) | " + ovenbuyamount + " Cookies";
-      document.getElementById("grandmotherbuy").hidden = false;
-    } else {
-      info("Not enough Cookies!");
-    }
-  } catch (error) {
-    console.error(error);
-    document.getElementById("errorlog").innerHTML = error;
-    crash("PURCHASE_FAULT");
-  }
+ buy('2');
 }
 function buygrandmother() {
-  try {
-    info("clear");
-
-    if (cookieamount >= grandmotherbuyamount) {
-      cookieamount = cookieamount - grandmotherbuyamount;
-      clickamount += 100;
-      refresh_amounts();
-      grandmotherbuyamount = grandmotherbuyamount * 2;
-      document.getElementById("grandmotherbuy").innerHTML =
-        "Someone's grandmother (+100 per click) | " +
-        grandmotherbuyamount +
-        " Cookies";
-    } else {
-      info("Not enough Cookies!");
-    }
-  } catch (error) {
-    console.error(error);
-    document.getElementById("errorlog").innerHTML = error;
-    crash("PURCHASE_FAULT");
-  }
+ buy('3')
 }
-//
-// End leagacy buy system
-//
+// shortcuts incase i forgot smething; the new code does the same thing but better
 
 // cheats
+// this is going to be replaced soon; this is some of the very early code and could be improved
 function devmode() {
-  console.log("chea- i mean dev mode activated");
-  cheat();
-}
-function cheat() {
-  try {
-    document.getElementById("dev").hidden = false;
-  } catch (error) {
-    console.error(error);
-    document.getElementById("errorlog").innerHTML = error;
-    crash("CHEATS_FAILED");
-  }
+  document.getElementById("dev").hidden = false;
 }
 
 function devcook() {
@@ -282,6 +209,20 @@ function devcook() {
     refresh_amounts();
   }
 }
+
+// cheats 2.0
+// console only for now 
+function cheatV2(cheatAmount){
+  try { 
+    if (isNaN(cheatAmount)) {
+      console.warn("Cheat is NaN");
+    } else {
+cookieamount += cheatAmount;
+    }
+  
+}}
+
+
 
 //
 //ERROR HANDLE :3
