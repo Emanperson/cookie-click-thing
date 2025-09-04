@@ -52,7 +52,7 @@ function loadSaveCode() {
     grandmotherbuyamount = parseInt(dataParts[4]);
     protoclickerbuyamount = parseInt(dataParts[5]);
     autoclickbuyamount = parseInt(dataParts[6]);
-    clickspersec = parseFloat(dataParts[7]); // assuming this might be a decimal
+    clickspersec = parseInt(dataParts[7]);
     saveVersion = dataParts[8]; // keep as string if versioning
 
   } else {
@@ -60,13 +60,6 @@ function loadSaveCode() {
   }
 }
 
-
-
-// should be built in but whatever
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-// sleep(ms).then(() => { });
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -78,13 +71,6 @@ function info(infocommand) {
   } else {
     infobox.innerHTML = "<p>" + infocommand + "</p>";
   }
-}
-
-function notenuough() {
-  infobox.innerHTML = "<p>Not enough Cookies!</p>";
-}
-function clear() {
-  infobox.innerHTML = "";
 }
 
 //
@@ -104,16 +90,7 @@ function addcookie() {
     crash("COOKIE_CLICK_FAILED");
   }
 }
-function autoClick() {
-   try {
-    cookieamount += clickspersec;
-    refresh_amounts();
-  } catch (error) {
-    console.error(error);
-    document.getElementById("errorlog").innerHTML = error;
-    crash("AUTO_CLICK_FAILED");
-  }
-}
+
 // THE function
 function refresh_amounts() {
   try {
@@ -134,11 +111,27 @@ function refresh_amounts() {
   }
 }
 
+function autoClick() {
+   try {
+    cookieamount += clickspersec;
+    refresh_amounts();
+  } catch (error) {
+    console.error(error);
+    document.getElementById("errorlog").innerHTML = error;
+    crash("AUTO_CLICK_FAILED");
+  }
+}
 //
 // Purchases :3
 //
 
 // new buy thing to clean up code
+// 1 - mini click
+// 2 - oven
+// 3 - grandma
+// 4 - 
+// 5 - autoclicker
+
 function buy(purchaseID) {
   try {
     if (purchaseID == 0) {
@@ -177,8 +170,7 @@ function buy(purchaseID) {
       clickspersec += 1;
     } else {
       info("Not enough Cookies!");
-      console.error("Not enough Cookies OR illegal purchase ID");
-      console.warn("I could make it chek if its less but eh thats a lot of work; imma just assume its not enough");
+      console.warn("Not enough Cookies OR illegal purchase ID")
     }
   } catch (error) {
     console.error(error);
@@ -191,10 +183,11 @@ function buy(purchaseID) {
 // TODO: migrate to the buy() function
 //
 // this is going to be in the code for a while but its probably going to go unused
-// i think the term is depricateed
+// i think the term is depricated
 //it works but shouldnt really be used anymore
-// note how the autoclicker uses buy() only
-// imma put a cheat sheet in here eventually
+
+
+// time to edit the HTML
 function buyminiclick() {
   try {
     info("clear");
