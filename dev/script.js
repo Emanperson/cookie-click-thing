@@ -1,16 +1,12 @@
-// feel free to take code fom this if u want
-// ignore my rambling in the comments
+// 1.5 
+// NO MORE NEW FEATURES, just improvements
+// first major update in ~4  M O N T H S
 
-
-
-
-var version = "1.5.0 - AUTOCLICKER";
 
 // General game setup
 var cookieamount = 0;
 var clickamount = 1;
 var errors = 0;
-
 // Buy amounts
 var minibuyamount = 15;
 var ovenbuyamount = 1000;
@@ -19,16 +15,17 @@ var protoclickerbuyamount = 50000;
 var protoAutoclickBuyAmount = 100000;
 var autoclickbuyamount = 1; 
 // debug
-var devbuild = "1";
-var savecode = "";
-var saveVersion = 1;
+var devbuild = "1"; // 90% sure this is jus for the BSOD thing but oh well
 
-let clickspersec = 0;
-setInterval(autoClick, 1000);
-
-console.log(version);
 document.getElementById("grandmotherbuy").hidden = true;
 
+
+
+
+
+// saving stuff, at some point it'll be saved to localstorage automatically; prob tied into refesh_ammounts()
+var savecode;
+var saveVersion = 1;
 function createSaveCode(){
   saveCode = "SAVE$"+cookieamount + "%" + clickamount + "%" + minibuyamount + "%" + ovenbuyamount + "%" + grandmotherbuyamount + "%" + protoclickerbuyamount + "%" + autoclickbuyamount + "%" + clickspersec + "%" + saveVersion + "$"
   prompt("This is your save code; its very basic but it will probably work" + saveCode)
@@ -56,7 +53,7 @@ function loadSaveCode() {
     saveVersion = dataParts[8]; // keep as string if versioning
 
   } else {
-    alert("Save coad load failed. is it a valid code?");
+    alert("Save code load failed. is it a valid code?");
   }
 }
 
@@ -111,6 +108,9 @@ function refresh_amounts() {
   }
 }
 
+
+let clickspersec = 0;
+setInterval(autoClick, 1000);
 function autoClick() {
    try {
     cookieamount += clickspersec;
@@ -219,7 +219,10 @@ function cheatV2(cheatAmount){
     } else {
 cookieamount += cheatAmount;
     }
-  
+  catch (error) {
+    console.error(error);
+    document.getElementById("errorlog").innerHTML = error;
+    crash("CHEAT_FAULT");
 }}
 
 
@@ -228,21 +231,15 @@ cookieamount += cheatAmount;
 //ERROR HANDLE :3
 //
 function crash(failreason) {
-  document.getElementById("bsod").hidden = false;
   document.getElementById("game").remove();
-  console.error("CRASHED!");
-  console.error(failreason);
-  if (failreason == undefined) {
-  } else {
-    document.getElementById("dbug").innerHTML = failreason;
-  }
-  document.querySelector("html").style.background = "#0074d0";
+  document.getElementById("bsod").hidden = false;
+  
+  console.error("CRASHED - ", failreason);  
   if (devbuild == 1) {
     document.querySelector("html").style.background = "#41FF00";
+  } else {
+    document.querySelector("html").style.background = "#0074d0";
   }
-  sleep(10000).then(() => {
-    window.location.reload();
-  });
 }
 
 refresh_amounts();
