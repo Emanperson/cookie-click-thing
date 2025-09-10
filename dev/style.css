@@ -4,7 +4,7 @@
   border-radius: 10px;
 }
 html {
-  background: url("https://emanperson.github.io/webimg/genericbg/macos-server10-6.png") no-repeat center center fixed;
+  background: url("https://emanperson.github.io/webimg/genericbg/macos10-6.png") no-repeat center center fixed;
   background-size: cover;
   color: white;
   font-family: "Ubuntu", sans-serif;
@@ -65,21 +65,6 @@ a {
 .glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-}
-
-#chooser {
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 5px;
-  padding-bottom: 12px;
-  max-width: 400px;
-  border-radius: 20px;
-  display: left;
-  text-align: left;
-  margin-bottom: 5px;
-  transition: height 0.5s ease;
-  align-items: left;
-  justify-content: left;
 }
 
 div {
