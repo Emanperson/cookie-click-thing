@@ -217,13 +217,14 @@ function cheatV2(cheatAmount){
     if (isNaN(cheatAmount)) {
       console.warn("Cheat is NaN");
     } else {
-cookieamount += cheatAmount;
+      cookieamount += cheatAmount;
     }
-  catch (error) {
+  } catch (error) {
     console.error(error);
     document.getElementById("errorlog").innerHTML = error;
     crash("CHEAT_FAULT");
-}}
+  }
+}
 
 
 
