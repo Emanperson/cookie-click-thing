@@ -92,7 +92,7 @@ function addcookie() {
 function refresh_amounts() {
   try {
     document.getElementById("amount").innerHTML =
-      cookieamount + " Cookies" + "<br>" + clickamount + " per click";
+      cookieamount + " Cookies" + "<br>" + clickamount + " per click + "<br>" + clickspersec + " Auto-clicks per second";
     document.getElementById("miniclickbuy").innerHTML =
       "Mini Mouse™ (+1 per click) | " + minibuyamount + " Cookies";
     document.getElementById("ovenbuy").innerHTML =
