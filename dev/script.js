@@ -56,7 +56,9 @@ function loadSaveCode() {
     alert("Save code load failed. is it a valid code?");
   }
 }
-
+if (savecode != 1) {
+  console.log("you modifed your save, didn't you");
+}
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
