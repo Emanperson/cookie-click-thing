@@ -1,7 +1,6 @@
-// 1.5 
+// 1.5
 // NO MORE NEW FEATURES, just improvements
 // first major update in ~4  M O N T H S
-
 
 // General game setup
 var cookieamount = 0;
@@ -13,34 +12,54 @@ var ovenbuyamount = 1000;
 var grandmotherbuyamount = 10000;
 var protoclickerbuyamount = 50000;
 var protoAutoclickBuyAmount = 100000;
-var autoclickbuyamount = 1; 
+var autoclickbuyamount = 1;
 // debug
 var devbuild = "1"; // 90% sure this is jus for the BSOD thing but oh well
 
 document.getElementById("grandmotherbuy").hidden = true;
 
-
-
-
-
 // saving stuff, at some point it'll be saved to localstorage automatically; prob tied into refesh_ammounts()
 var savecode;
 var saveVersion = 1;
-function createSaveCode(){
-  saveCode = "SAVE$"+cookieamount + "%" + clickamount + "%" + minibuyamount + "%" + ovenbuyamount + "%" + grandmotherbuyamount + "%" + protoclickerbuyamount + "%" + autoclickbuyamount + "%" + clickspersec + "%" + saveVersion + "$"
-  prompt("This is your save code; its very basic but it will probably work" + saveCode)
+function createSaveCode() {
+  saveCode =
+    "SAVE$" +
+    cookieamount +
+    "%" +
+    clickamount +
+    "%" +
+    minibuyamount +
+    "%" +
+    ovenbuyamount +
+    "%" +
+    grandmotherbuyamount +
+    "%" +
+    protoclickerbuyamount +
+    "%" +
+    autoclickbuyamount +
+    "%" +
+    clickspersec +
+    "%" +
+    saveVersion +
+    "$";
+  prompt(
+    "This is your save code; its very basic but it will probably work" +
+      saveCode
+  );
 }
 function loadSaveCode() {
-  let saveCode = prompt("Please paste your save code. If you dont't know what that looks like; it should start with SAVE$");
-  
+  let saveCode = prompt(
+    "Please paste your save code. If you dont't know what that looks like; it should start with SAVE$"
+  );
+
   // Check if the code starts with "SAVE$" and ends with "$"
   if (saveCode.startsWith("SAVE$") && saveCode.endsWith("$")) {
     // Strip the prefix and suffix
     let dataString = saveCode.slice(5, -1);
-    
+
     // Split the string into individual values
     let dataParts = dataString.split("%");
-    
+
     // Assign values back to variables
     cookieamount = parseInt(dataParts[0]);
     clickamount = parseInt(dataParts[1]);
@@ -51,7 +70,6 @@ function loadSaveCode() {
     autoclickbuyamount = parseInt(dataParts[6]);
     clickspersec = parseInt(dataParts[7]);
     saveVersion = dataParts[8]; // keep as string if versioning
-
   } else {
     alert("Save code load failed. is it a valid code?");
   }
@@ -94,7 +112,14 @@ function addcookie() {
 function refresh_amounts() {
   try {
     document.getElementById("amount").innerHTML =
-      cookieamount + " Cookies" + "<br>" + clickamount + " per click + "<br>" + clickspersec + " Auto-clicks per second";
+      cookieamount +
+      " Cookies" +
+      "<br>" +
+      clickamount +
+      "per click" +
+      "<br>" +
+      clickspersec +
+      "Auto-clicks per second";
     document.getElementById("miniclickbuy").innerHTML =
       "Mini Mouse™ (+1 per click) | " + minibuyamount + " Cookies";
     document.getElementById("ovenbuy").innerHTML =
@@ -110,11 +135,10 @@ function refresh_amounts() {
   }
 }
 
-
 let clickspersec = 0;
 setInterval(autoClick, 1000);
 function autoClick() {
-   try {
+  try {
     cookieamount += clickspersec;
     refresh_amounts();
   } catch (error) {
@@ -131,7 +155,7 @@ function autoClick() {
 // 1 - mini click
 // 2 - oven
 // 3 - grandma
-// 4 - 
+// 4 -
 // 5 - autoclicker
 
 function buy(purchaseID) {
@@ -172,7 +196,7 @@ function buy(purchaseID) {
       clickspersec += 1;
     } else {
       info("Not enough Cookies!");
-      console.warn("Not enough Cookies OR illegal purchase ID")
+      console.warn("Not enough Cookies OR illegal purchase ID");
     }
   } catch (error) {
     console.error(error);
@@ -181,15 +205,14 @@ function buy(purchaseID) {
   }
 }
 
-
 function buyminiclick() {
-  buy('1');
+  buy("1");
 }
 function buyoven() {
- buy('2');
+  buy("2");
 }
 function buygrandmother() {
- buy('3')
+  buy("3");
 }
 // shortcuts incase i forgot smething; the new code does the same thing but better
 
@@ -213,9 +236,9 @@ function devcook() {
 }
 
 // cheats 2.0
-// console only for now 
-function cheatV2(cheatAmount){
-  try { 
+// console only for now
+function cheatV2(cheatAmount) {
+  try {
     if (isNaN(cheatAmount)) {
       console.warn("Cheat is NaN");
     } else {
@@ -228,16 +251,14 @@ function cheatV2(cheatAmount){
   }
 }
 
-
-
 //
 //ERROR HANDLE :3
 //
 function crash(failreason) {
   document.getElementById("game").remove();
   document.getElementById("bsod").hidden = false;
-  
-  console.error("CRASHED - ", failreason);  
+
+  console.error("CRASHED - ", failreason);
   if (devbuild == 1) {
     document.querySelector("html").style.background = "#41FF00";
   } else {
