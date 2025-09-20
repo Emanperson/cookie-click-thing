@@ -74,7 +74,7 @@ function loadSaveCode() {
     alert("Save code load failed. is it a valid code?");
   }
 }
-if (savecode != 1) {
+if (saveVersion != 1) {
   console.log("you modifed your save, didn't you");
 }
 function getRandomInt(min, max) {
