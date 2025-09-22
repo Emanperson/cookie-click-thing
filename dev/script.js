@@ -23,25 +23,7 @@ var savecode;
 var saveVersion = 1;
 function createSaveCode() {
   saveCode =
-    "SAVE$" +
-    cookieamount +
-    "%" +
-    clickamount +
-    "%" +
-    minibuyamount +
-    "%" +
-    ovenbuyamount +
-    "%" +
-    grandmotherbuyamount +
-    "%" +
-    protoclickerbuyamount +
-    "%" +
-    autoclickbuyamount +
-    "%" +
-    clickspersec +
-    "%" +
-    saveVersion +
-    "$";
+    "SAVE$" + cookieamount + "%" + clickamount + "%" + minibuyamount + "%" + ovenbuyamount + "%" + grandmotherbuyamount + "%" + protoclickerbuyamount + "%" + autoclickbuyamount +"%" + clickspersec + "%" + saveVersion + "$";
   prompt(
     "This is your save code; its easy to edit but it works.    " +
       saveCode
@@ -49,7 +31,7 @@ function createSaveCode() {
 }
 function loadSaveCode() {
   let saveCode = prompt(
-    "Please paste your save code. If you dont't know what that looks like; it should start with SAVE$"
+    "Please paste your save code. This will overwrite your current data."
   );
 
   // Check if the code starts with "SAVE$" and ends with "$"
@@ -69,13 +51,13 @@ function loadSaveCode() {
     protoclickerbuyamount = parseInt(dataParts[5]);
     autoclickbuyamount = parseInt(dataParts[6]);
     clickspersec = parseInt(dataParts[7]);
-    saveVersion = dataParts[8]; // keep as string if versioning
+    saveVersion = dataParts[8]; 
   } else {
     alert("Save code load failed. is it a valid code?");
   }
 }
-if (saveVersion != 1) {
-  console.log("you modifed your save, didn't you");
+if (saveVersion != 1.5) {
+  console.warn("For compatability, i will create a save updater tool when i make 1.6");
 }
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
