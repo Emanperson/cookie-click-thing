@@ -1,7 +1,5 @@
-// 1.5
-// NO MORE NEW FEATURES, just improvements
-// first major update in ~4  M O N T H S
-
+// 1.5 (BETA - to be finalized by 26th to prep for release)
+// 1.6 will probably just build apon this although some balance will occur in 1.5.x updates
 // General game setup
 var cookieamount = 0;
 var clickamount = 1;
