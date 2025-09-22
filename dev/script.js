@@ -43,7 +43,7 @@ function createSaveCode() {
     saveVersion +
     "$";
   prompt(
-    "This is your save code; its very basic but it will probably work" +
+    "This is your save code; its easy to edit but it works.    " +
       saveCode
   );
 }
