@@ -1,10 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+/* Final v1.5 CSS */
 * {
   border-radius: 10px;
 }
 html {
   background: url("https://emanperson.github.io/webimg/genericbg/macos-server10-6.png") no-repeat center center fixed;
+/* NOTE: for NON-DEV delete -server */
   background-size: cover;
   color: white;
   font-family: "Ubuntu", sans-serif;
