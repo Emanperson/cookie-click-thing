@@ -4,14 +4,15 @@
 var cookieamount = 0;
 var clickamount = 1;
 var errors = 0;
+
 // Buy amounts
 var minibuyamount = 15;
 var ovenbuyamount = 1000;
 var grandmotherbuyamount = 10000;
-var protoclickerbuyamount = 50000;
-var protoAutoclickBuyAmount = 100000;
-var autoclickbuyamount = 1;
-// debug
+//var protoclickerbuyamount = 50000;
+var AutoclickBuyAmount = 100000;
+
+
 var devbuild = "1"; // 90% sure this is jus for the BSOD thing but oh well
 
 document.getElementById("grandmotherbuy").hidden = true;
@@ -91,23 +92,11 @@ function addcookie() {
 // THE function
 function refresh_amounts() {
   try {
-    document.getElementById("amount").innerHTML =
-      cookieamount +
-      " Cookies" +
-      "<br>" +
-      clickamount +
-      "per click" +
-      "<br>" +
-      clickspersec +
-      "Auto-clicks per second";
-    document.getElementById("miniclickbuy").innerHTML =
-      "Mini Mouse™ (+1 per click) | " + minibuyamount + " Cookies";
-    document.getElementById("ovenbuy").innerHTML =
-      "Oven (+20 per click) | " + ovenbuyamount + " Cookies";
-    document.getElementById("grandmotherbuy").innerHTML =
-      "Someone's grandmother (+100 per click) | " +
-      grandmotherbuyamount +
-      " Cookies";
+    document.getElementById("amount").innerHTML = cookieamount + " Cookies" + "<br>" + clickamount + "per click" + "<br>" + clickspersec + " Auto-clicks per second";
+    document.getElementById("miniclickbuy").innerHTML =  "Mini Mouse™ (+1 per click) | " + minibuyamount + " Cookies";
+    document.getElementById("ovenbuy").innerHTML = "Oven (+20 per click) | " + ovenbuyamount + " Cookies";
+    document.getElementById("grandmotherbuy").innerHTML = "Someone's grandmother (+100 per click) | " +  grandmotherbuyamount + " Cookies";
+    document.getElementById("autoclickbuy").innerHTML = "Auto Clicker (+1 Click per second) | " + AutoclickBuyAmount + " Cookies";
   } catch (error) {
     console.error(error);
     document.getElementById("errorlog").innerHTML = error;
@@ -140,43 +129,31 @@ function autoClick() {
 
 function buy(purchaseID) {
   try {
-    if (purchaseID == 0) {
-      console.warn("A Valid purchase ID is required.");
-    } else if (purchaseID == 1 && cookieamount >= minibuyamount) {
+     if (purchaseID == 1 && cookieamount >= minibuyamount) {
       cookieamount -= minibuyamount;
       clickamount += 1;
-      refresh_amounts();
       minibuyamount = Number(minibuyamount) + 5;
-      document.getElementById("miniclickbuy").innerHTML =
-        "Mini Mouse™ (+1 per click) | " + minibuyamount + " Cookies";
-    } else if (purchaseID == 1 && cookieamount < minibuyamount) {
-      info("Not enough Cookies!");
+        refresh_amounts();
     } else if (purchaseID == 2 && cookieamount >= ovenbuyamount) {
       cookieamount -= ovenbuyamount;
       clickamount += 20;
-      refresh_amounts();
       ovenbuyamount = Number(ovenbuyamount) * 2;
-      document.getElementById("ovenbuy").innerHTML =
-        "Oven (+20 per click) | " + ovenbuyamount + " Cookies";
+    refresh_amounts();
       document.getElementById("grandmotherbuy").hidden = false;
-    } else if (purchaseID == 2 && cookieamount < ovenbuyamount) {
-      info("Not enough Cookies!");
     } else if (purchaseID == 3 && cookieamount >= grandmotherbuyamount) {
       cookieamount -= grandmotherbuyamount;
       clickamount += 100;
-      refresh_amounts();
-      grandmotherbuyamount = grandmotherbuyamount * 2;
-      document.getElementById("grandmotherbuy").innerHTML =
-        "Someone's grandmother (+100 per click) | " +
-        grandmotherbuyamount +
-        " Cookies";
-    } else if (purchaseID == 5 && cookieamount >= autoclickbuyamount) {
-      // ID 5 bc i plan to make a shittier version of it thats cheaper but this is really jus a test
-      cookieamount -= autoclickbuyamount;
+        grandmotherbuyamount = grandmotherbuyamount * 2;
+          refresh_amounts();
+    } else if (purchaseID == 5 && cookieamount >= AutoclickBuyAmount) {
+      cookieamount -= AutoclickBuyAmount;
       clickspersec += 1;
+      AutoclickBuyAmount *= 1.4;
+          refresh_amounts();
     } else {
       info("Not enough Cookies!");
       console.warn("Not enough Cookies OR illegal purchase ID");
+      console.log("I mostly jus assume not enough for a smoother experience")
     }
   } catch (error) {
     console.error(error);
@@ -203,17 +180,8 @@ function devmode() {
 }
 
 function devcook() {
-  if (deviscookin == "FISH") {
-    console.log("FISH");
-    crash("FISH");
-  } else if (isNaN(deviscookin)) {
-    crash("BAD_CHEATS");
-  } else {
-    let deviscookin = parseInt(document.getElementById("devcooks").value, 10);
-    cookieamount += deviscookin;
-    refresh_amounts();
-  }
-}
+cheatV2(deviscookin);
+} // might work, might not- not actually needed anymore
 
 // cheats 2.0
 // console only for now
@@ -223,7 +191,8 @@ function cheatV2(cheatAmount) {
       console.warn("Cheat is NaN");
     } else {
       cookieamount += cheatAmount;
-    }
+      refresh_amounts();
+    } 
   } catch (error) {
     console.error(error);
     document.getElementById("errorlog").innerHTML = error;
