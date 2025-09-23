@@ -199,7 +199,7 @@ function cheatV2(cheatAmount) {
     crash("CHEAT_FAULT");
   }
 }
-
+console.log("if you wanna cheat use cheatV2(####));
 //
 //ERROR HANDLE :3
 //
