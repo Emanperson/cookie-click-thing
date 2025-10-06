@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-  <link href="style.css" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style.css"></noscript>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cookie Clicker</title>
-  <link rel="icon" type="image/x-icon" href="/cookie-click-thing/favicon/mainicon.png"/>
+  <link rel="icon" type="image/x-icon" href="/webimg/cookie/favicon/crashicon.png"/>
 </head>
 <body id="body">
   <div id="game">
     <div id="header">
-      <header>v1.4.3 | Web Version<br><div color=green>1.5 Releases on October 1st, bringing saving, automatic clicking, and many improvements to the javaScipt</div></header>
+      <header><br> <br>v1.5.0<br> <button onclick="createSaveCode()">Save</button> <button onclick="loadSaveCode()">Load</button> </header>
    
     </div>
     <br>
 
     <button id="button" onclick="addcookie()">
-      <img class="img" src="https://i.imgur.com/kxzy2VO.png" alt="Click for cookies">
+      <img class="img" src="/webimg/cookie/cookie.png" alt="Click for cookies">
     </button>
     <br>
 
     <!-- Info Display -->
     <div id="info"></div>
 
-    <p id="amount">0 Cookies <br> 1 per click</p>
+    <p id="amount">0 Cookies <br> 1 per click <br> 0 Auto-clicks per second</p>
     <br>
 
     <div id="upgrades" class="glass">
-      <button id="miniclickbuy" onclick="buyminiclick()">Mini Mouse™ (+1 per click) | 15 Cookies</button>
+      <button id="miniclickbuy" onclick="buy('1')">Mini Mouse™ (+1 per click) | 15 Cookies</button>
       <br>
-      <button id="ovenbuy" onclick="buyoven()">Oven (+20 per click) | 100 Cookies</button>
+      <button id="ovenbuy" onclick="buy('2')">Oven (+20 per click) | 1000 Cookies</button>
       <br>
-      <button id="grandmotherbuy" onclick="buygrandmother()">Someone's grandmother (+100 per click) | 10,000 Cookies</button>
+      <button id="grandmotherbuy" onclick="buy('3')">Someone's grandmother (+100 per click) | 10,000 Cookies</button>
       <br>
+      <button id="autoclickbuy" onclick="buy('5')">Auto Clicker (+1 Click per second) | 100,000 Cookies</button>
+<!-- TODO: improve le aqutoclicker buy thing -->
     </div>
-
-    <br>
-    <br>
-    <br>
-    <button onclick="cheat()">Just Cheat</button>
-    <div id="dev"></div>
-  </div>
+    <!-- cheat button removed -->
 <div id="bsod" hidden>
   <h1 id="frown"> :(</h1>
   <p class="text-main">Game Crashed</p>
@@ -53,10 +50,10 @@
   <br>
   <br>
   <br>
-  <img id="qr" src="https://i.postimg.cc/JzDqG87j/frame-1.png"></img>
-  <p class="text-main"> For Support, scan this QR code</p>
+  <img id="qr" src="/webimg/cookie/qrcode.png"></img>
+  <p class="text-main"> For "Support", scan this QR code</p>
 </div>
-</body>
-    <script src="script.js"></script>
+     <script src="script.js"></script>
+</body>   
 <!-- Made by emanperson0 :3 -->
 </html>
