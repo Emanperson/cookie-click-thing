@@ -108,7 +108,7 @@ let clickspersec = 0;
 setInterval(autoClick, 1000);
 function autoClick() {
   try {
-    cookieamount += clickspersec;
+    cookieamount += (clickspersec * clickamount);
     refresh_amounts();
   } catch (error) {
     console.error(error);
