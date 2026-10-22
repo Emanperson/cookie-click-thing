@@ -7,7 +7,7 @@ var errors = 0;
 var minibuyamount = 15;
 var ovenbuyamount = 1000;
 var grandmotherbuyamount = 10000;
-//var protoclickerbuyamount = 50000;
+var protoclickerbuyamount = 50000;
 var AutoclickBuyAmount = 100000;
 
 
