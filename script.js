@@ -20,7 +20,7 @@ var savecode;
 var saveVersion = 1.5;
 function createSaveCode() {
   saveCode =
-    "SAVE$" + cookieamount + "%" + clickamount + "%" + minibuyamount + "%" + ovenbuyamount + "%" + grandmotherbuyamount + "%" + protoclickerbuyamount + "%" + autoclickbuyamount +"%" + clickspersec + "%" + saveVersion + "$";
+    "SAVE$" + cookieamount + "%" + clickamount + "%" + minibuyamount + "%" + ovenbuyamount + "%" + grandmotherbuyamount + "%" + protoclickerbuyamount + "%" + AutoclickBuyAmount +"%" + clickspersec + "%" + saveVersion + "$";
   prompt(
     "This is your save code; its easy to edit but it works.    " +
       saveCode
